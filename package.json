@@ -1,6 +1,11 @@
 {
   "name": "01-angular22",
   "version": "0.0.0",
+  "author": {
+    "name": "Francisco Belda",
+    "email": "francisco.belda@solvam.es"
+  },
+  "description": "Mi primer proyecto de Angular",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
