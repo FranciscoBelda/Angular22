@@ -1,0 +1,80 @@
+<h1>Teoría 5</h1>
+
+
+<app-promo-banner-component/>
+
+<div class="row">
+  <div class="col-6">
+    <h2 class="text-secondary">&#64; For</h2>
+    <ul>
+      @for (i of [1,2,3,4,5];track $index){
+        <li>Item {{i}}</li>
+        @if ($last){
+          <p>Soy el último !!!</p>
+        }
+        @if ($first){
+          <p>Soy el primero</p>
+        }
+      } @empty {
+        <li class="list-unstyled">No hay elementos en la colección</li>
+      }
+    </ul>
+  </div>
+  <div class="col-6">
+    <h2 class="text-secondary">&#64; empty</h2>
+    <ul>
+      @for (i of [];track $index){
+        <li>Item {{$index}}</li>
+      } @empty {
+        <li class="list-unstyled">No hay elementos en la colección</li>
+      }
+    </ul>
+  </div>  <div class="col-6">
+    <h2 class="text-secondary">$even y $odd</h2>
+    <ul>
+      @for (i of [1,2,3,4,5];track $index){
+        @if ($even){
+          <li class="text-info">PAR</li>
+        }
+        @if ($odd){
+          <li class="text-warning">IMPAR</li>
+        }
+      } @empty {
+        <li class="list-unstyled">No hay elementos en la colección</li>
+      }
+    </ul>
+  </div>
+  <div class="col-6">
+    <h2 class="text-secondary">&#64; count</h2>
+    <ul>
+      @for (i of [1,1,1,1,1,1,1,1,1,1];track $index){
+        <li>Item {{$count}}</li>
+      } @empty {
+        <li class="list-unstyled">No hay elementos en la colección</li>
+      }
+    </ul>
+  </div>
+  <div class="col-6">
+    <h2 class="text-secondary">&#64; If</h2>
+    @if (1===1){
+      <h3 class="text-success">Si es verdad...</h3>
+    }
+  </div>
+  <div class="col-6">
+    <h2 class="text-secondary">&#64; If</h2>
+    @if (1!=1){
+      <h3 class="text-success">Si es verdad...</h3>
+    } @else {
+      <h3 class="text-danger">Si es mentira...</h3>
+    }
+  </div>
+  <div class="col-6">
+    <h2 class="text-secondary">&#64; Switch</h2>
+    @switch (1){
+      @case (1){
+        <li>Soy el caso 1</li>
+      }
+    }
+  </div>
+</div>
+
