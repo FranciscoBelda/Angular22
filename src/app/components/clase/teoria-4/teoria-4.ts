@@ -52,7 +52,7 @@ ejemploArrays(){
     // reduce: Acumulador del contenido del array
 
   const miArray = [1,2,3];
-  const array2 = miArray.map(item => item = item +1);
+  const array2 = miArray.map(item => item +1);
   console.log('map',array2);
 
   console.log('filter',miArray.filter(item => item >2));

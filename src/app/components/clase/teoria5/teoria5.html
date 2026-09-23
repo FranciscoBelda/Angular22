@@ -24,7 +24,7 @@
     <h2 class="text-secondary">&#64; empty</h2>
     <ul>
       @for (i of [];track $index){
-        <li>Item {{$index}}</li>
+        <li>Item {{i}}</li>
       } @empty {
         <li class="list-unstyled">No hay elementos en la colección</li>
       }

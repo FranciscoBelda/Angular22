@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import {NgbAlert} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  imports: [
-    NgbAlert
-  ],
   selector: 'app-main-component',
   styleUrl: './main-component.scss',
   templateUrl: './main-component.html',

@@ -6,7 +6,7 @@ import {MainComponent} from './components/web/main-component/main-component';
 import {TiposDatosComponent} from './components/clase/tipos-datos-component/tipos-datos-component';
 
 @Component({
-  imports: [RouterOutlet, Navbar, Footer, MainComponent, TiposDatosComponent],
+  imports: [RouterOutlet, Navbar, Footer],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
