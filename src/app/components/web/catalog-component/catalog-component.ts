@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {Product} from '../../../common/interfaces/interfaces';
 import {PRODUCTS_MOCK} from '../../../common/mocks/products.mock';
 import {ProductCardComponent} from '../product-card-component/product-card-component';
@@ -12,6 +12,15 @@ import {ProductCardComponent} from '../product-card-component/product-card-compo
   templateUrl: './catalog-component.html',
 })
 export class CatalogComponent {
-  products: Product[] = PRODUCTS_MOCK;
+  products = signal<Product[]>(PRODUCTS_MOCK);
 
+  reduceStock(selectedProduct: Product) {
+    this.products.update(currentProducts => currentProducts.map(prod => {
+      if (prod.id === selectedProduct.id && prod.stock > 0){
+        return {...prod, stock: prod.stock -1};
+      }
+      return prod;
+      })
+    )
+  }
 }

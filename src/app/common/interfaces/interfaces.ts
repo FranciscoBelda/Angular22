@@ -16,6 +16,7 @@ export interface Product {
   id: string;
   title: string;
   price: number;
+  stock: number;
   description: string;
   category: CategoryType;
   imageUrl: string;
@@ -27,4 +28,10 @@ export interface Category {
   name: string;
   active: boolean;
   icon: string;
+}
+
+export interface UserProfile {
+  name: string;
+  city: string;
+  isPremium: boolean;
 }

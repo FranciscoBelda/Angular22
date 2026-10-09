@@ -7,6 +7,7 @@ export const PRODUCTS_MOCK: Product[] = [
     description: 'Camiseta Molona',
     category: "clothing",
     imageUrl: 'https://static.kiabi.es/images/pack-de-2-camisetas-basicas-blanco-bze23_1_hd1.jpg?width=800',
+    stock: 5,
     rating: {
       rate: 4,
       count: 213
@@ -19,6 +20,7 @@ export const PRODUCTS_MOCK: Product[] = [
     description: 'Pantalones Molones',
     category: "clothing",
     imageUrl: 'https://mivestidorazul.es/12341-large_default/pantalon-recto-tela-vikamma-azul-federal.jpg',
+    stock: 5,
     rating: {
       rate: 4.5,
       count: 123
@@ -31,6 +33,7 @@ export const PRODUCTS_MOCK: Product[] = [
     description: 'Radio guapa',
     category: 'electronics',
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS3WEYe3jrDLanSIkktzshQoA8mdkVLHHscFC0ecfkdPeRH8YjgyGgOxEQ&s=10',
+    stock: 5,
     rating: {
       rate: 3,
       count: 332
@@ -43,6 +46,7 @@ export const PRODUCTS_MOCK: Product[] = [
     description: 'Televisor Micro QLED 88"',
     category: "electronics",
     imageUrl: 'https://www.electrodepot.es/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/P10011707-2.jpg',
+    stock: 5,
     rating: {
       rate: 4.2,
       count: 4442
@@ -55,6 +59,7 @@ export const PRODUCTS_MOCK: Product[] = [
     description: 'Un hombre y un gato encerrados en una mazmorra contra el universo.',
     category: 'books',
     imageUrl: 'https://m.media-amazon.com/images/I/71c0uGhwikL._UF1000,1000_QL80_AIweblab1381794,T1_.jpg',
+    stock: 5,
     rating: {
       rate: 5,
       count: 3242
@@ -67,6 +72,7 @@ export const PRODUCTS_MOCK: Product[] = [
     description: 'Cactus para los que no saben cuidar plantas',
     category: "home",
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR50dCQ9VCcU3_Cwu-hxLI8wS-Ob2B_k-dSKmGL7RSytgvrIof462GxNEs&s=10',
+    stock: 5,
     rating: {
       rate: 5,
       count: 2323

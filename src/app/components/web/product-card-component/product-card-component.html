@@ -7,10 +7,31 @@
     <div class="card-text">
       <span class="badge bg-info">{{product().category}}</span>
     </div>
-    <div class="card-footer">
-      <div class="card-text">
-        <div class="text-danger">{{product().price | currency:'EUR'}}</div>
-      </div>
+
+    <div class="card-text">
+      Unidades disponibles: <span class="badge bg-info">{{product().stock}}</span>
     </div>
+    @if (showAlert()){
+      <div class="alert alert-danger py-2 fs-6" role="alert">
+        ¡Agotado! No puedes añadir más unidades.
+      </div>
+    }
+    @if (isLowStock()) {
+      <div class="alert alert-warning py-1 mb-2">Solo quedan {{product().stock}} unidades</div>
+    }
+    @if (isOutOfStock()) {
+      <div class="alert alert-danger py-1 mb-2">Agotado</div>
+    }
+
+
   </div>
+  <div class="card-footer d-flex justify-content-between">
+  <div class="card-text">
+    <div class="text-danger">{{product().price | currency:'EUR'}}</div>
+  </div>
+    <div class="card-text">
+      <button [disabled]="isOutOfStock()" class=" btn btn-sm btn-outline-primary"
+              (click)="onAddToCart()"> 🛒Add to cart</button>
+    </div>
+</div>
 </div>

@@ -16,6 +16,7 @@ export class EjerciciosSesion4 implements OnInit {
       description: 'Camiseta guapa',
       category: 'clothing',
       imageUrl: 'imageCamiseta.jpg',
+      stock: 5,
       rating: {
         count: 1,
         rate: 5
@@ -28,6 +29,7 @@ export class EjerciciosSesion4 implements OnInit {
       description: 'Radio guapa',
       category: 'electronics',
       imageUrl: 'imageRadio.jpg',
+      stock: 5,
       rating: {
         count: 2,
         rate: 4
