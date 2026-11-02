@@ -1,0 +1,10 @@
+<h1 class="text-primary">Teoría 10</h1>
+<h2 class="text-secondary">Model</h2>
+
+<app-teoria10-hijo [quantity]="5"  [quantityModern]="2"
+                   (quantityModernChange)="updateModernQuantity($event)"
+                   (quantityChange)="updateQuantity($event)" />
+
+
+<h2 class="text-info text-center">STEPPER</h2>
+<app-quantity-stepper-parent-component/>

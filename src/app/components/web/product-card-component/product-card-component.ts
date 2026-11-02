@@ -1,10 +1,12 @@
 import {Component, computed, input, InputSignal, output, signal, WritableSignal} from '@angular/core';
 import {Product} from '../../../common/interfaces/interfaces';
 import {CurrencyPipe} from '@angular/common';
+import {QuantityStepperComponent} from '../quantity-stepper-component/quantity-stepper-component';
 
 @Component({
   imports: [
-    CurrencyPipe
+    CurrencyPipe,
+    QuantityStepperComponent
   ],
   selector: 'app-product-card-component',
   styleUrl: './product-card-component.scss',
@@ -20,13 +22,23 @@ export class ProductCardComponent {
 
   isOutOfStock = computed(() => this.product().stock === 0);
 
-  addToCart = output<Product>();
+  addToCart = output<{ product: Product, quantity: number }>();
 
   onAddToCart() {
    /* if (this.stock() > 0) this.stock.update(currentStock => currentStock -1);
     if (this.stock() === 0) this.showAlert.set(true);*/
     if (!this.isOutOfStock()){
-      this.addToCart.emit(this.product());
+      this.addToCart.emit({
+        product: this.product(),
+        quantity: this.selectedQuantity()
+      });
+      this.selectedQuantity.set(1);
     }
+  }
+
+  viewDetails = output<Product>();
+  selectedQuantity = signal(1);
+  onViewDetails() {
+    this.viewDetails.emit(this.product());
   }
 }

@@ -1,0 +1,93 @@
+<h1 class="text-primary">Teoría 11 - WorkShop 2</h1>
+
+<h2>Enunciado</h2>
+
+<h3>Fase 1: Persistencia e Hidratación Automática en CartService</h3>
+<p class="container border rounded bg-light">
+
+  Crear un servicio CartService que mantenga el estado del carrito de compras y garantice su persistencia entre recargas de página.
+  El servicio debe guardar el estado en localStorage cada vez que cambien los artículos y, al inicializarse, debe leer
+  (hidratar) los datos guardados para no perder la compra si el usuario refresca la ventana (F5).
+
+  Lo que debes implementar:
+  Modelos: Define la interfaz CartItem con la estructura  product: Product; quantity: number.
+
+  Estado Privado e Hidratación:
+  Crea la clave constante const STORAGE_KEY = 'digishop_cart_v1';
+
+  Implementa una función privada #loadFromStorage() que recupere el array guardado en localStorage (manejando errores con try/catch y retornando [ ] si no hay datos).
+
+  Define una señal privada #items = signalCartItem (...) inicializada con el resultado de this.#loadFromStorage() .
+
+  Exposición Pública y Estado Derivado:
+  Expón #items como señal de solo lectura: readonly items = this.#items.asReadonly();
+
+  Crea la señal calculada readonly totalItems = computed(...) que devuelva la suma total de unidades en el carrito.
+
+  Crea la señal calculada readonly totalPrice = computed(...) que devuelva el importe total acumulado (€).
+
+  Persistencia Automática:
+  Dentro del constructor(), configura un effect() que guarde en localStorage.setItem() el valor actualizado de #items().
+
+  Métodos de Mutación (Inmutabilidad estricta):
+  addProduct(product: Product, quantity: number = 1):
+  Si el producto ya existe en el carrito, incrementa su cantidad;
+  si no existe, añádelo como nuevo elemento.
+
+  updateQuantity(productId: number, newQuantity: number):
+  Actualiza las unidades de un ítem.
+  Si newQuantity <= 0, debes invocar internamente a removeItem.
+
+  removeItem(productId: number):
+  Elimina el producto del array usando .filter().
+
+  clearCart(): Vacía el carrito estableciendo la señal a [].
+
+</p>
+
+<h3>Fase 2: Componente Desplegable CartDrawerComponent</h3>
+<p>
+  Construir un panel lateral CartDrawerComponent desplegable tipo Offcanvas que escuche al CartService
+  y permita aumentar/disminuir unidades o eliminar items individualmente.
+  Lo que debes implementar
+  Entradas y Salidas (API del Componente):
+  Define la entrada isOpen = input boolean (false); para controlar si el panel es visible.
+    Define la salida closeDrawer = output void (); para notificar al componente padre que el usuario ha solicitado
+  cerrar el panel (mediante la X o haciendo clic en el fondo oscuro/backdrop).
+
+      Inyección de Dependencias:
+      Inyecta el CartService de forma directa usando inject(CartService); y exponlo como propiedad del componente para consumirlo en la plantilla.
+
+      Renderizado de la Plantilla HTML:
+      Caso Carrito Vacío (if): Muestra un mensaje amigable indicando que no hay productos seleccionados.
+
+      Lista de Productos (for con track item.product.id):
+      Muestra título del producto, precio unitario y subtotal por línea (precio * cantidad).
+      Incluye botones + y - conectados a cartService.updateQuantity( ).
+      Incluye un botón con icono de papelera que invoque a cartService.removeItem( ).
+
+      Pie del Carrito:
+      Muestra el precio total acumulado usando cartService.totalPrice() filtrado por CurrencyPipe.
+      Botón "Vaciar Carrito" que invoque cartService.clearCart( )
+      Botón "Finalizar Pedido" que muestre un mensaje de confirmación (alert), vacíe el carrito y emita el evento closeDrawer.
+</p>
+
+
+<h3>Fase 3: Integración General en AppComponent</h3>
+
+<p>
+  Coordinamos el estado global en el componente raíz instanciando el NavbarComponent, la lista de productos y el CartDrawerComponent.
+  Lo que debes implementar
+  En la barra de navegación (NavbarComponent):
+  Inyecta CartService para mostrar un badge contador con cartService.totalItems() . Oculta el badge si el total es 0.
+  Haz un output funcional para avisar a AppComponent de que abra el CartDrawer openCart = output void>()
+    Haz que al pulsar sobre el icono del carrito se emita la salida openCart.emit() .
+
+    En el componente raíz (AppComponent):
+    Mantén la señal local isCartOpen = signal(false).
+    Escucha la salida (openCart) de NavbarComponent para cambiar isCartOpen a true app-navbar (openCart)="isCartOpen.set(true)" />
+    Pasa la señal [isOpen]="isCartOpen()" al CartDrawerComponent y escucha (closeDrawer) para devolver la señal a false.
+    app-cart-drawer-component
+      isOpen ="isCartOpen()"
+      (closeDrawer)="isCartOpen.set(false)" /
+</p>

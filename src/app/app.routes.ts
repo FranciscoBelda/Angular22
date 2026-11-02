@@ -9,6 +9,10 @@ import {UserProfileComponent} from './components/web/user-profile-component/user
 import {Teoria8} from './components/clase/teoria8/teoria8';
 import {CartSummary} from './components/web/cart-summary/cart-summary';
 import {Teoria9} from './components/clase/teoria9/teoria9';
+import {Teoria10} from './components/clase/teoria10/teoria10';
+import {Teoria11} from './components/clase/teoria11/teoria11';
+import {Teoria12} from './components/clase/teoria12/teoria12';
+import {ProductDetailComponent} from './components/web/product-detail-component/product-detail-component';
 
 export const routes: Routes = [
   {
@@ -41,8 +45,24 @@ export const routes: Routes = [
     component: Teoria9
   },
   {
+    path: 'clase/teoria10',
+    component: Teoria10
+  },
+  {
+    path: 'clase/teoria11',
+    component: Teoria11
+  },
+  {
+    path: 'clase/teoria12',
+    component: Teoria12
+  },
+  {
     path: 'categories-list',
     component: CategoriesListComponent
+  },
+  {
+    path: 'product-detail',
+    component: ProductDetailComponent
   },
   {
     path: 'catalog',

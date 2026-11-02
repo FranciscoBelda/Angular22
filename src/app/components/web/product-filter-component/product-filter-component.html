@@ -1,0 +1,21 @@
+<div class="row g-3 bg-light p-3 rounded shadow-sm mb-4">
+  <div class="col-md-8">
+    <input
+      class="form-control"
+      placeholder="Buscar producto por nombre..."
+      [ngModel]="searchQuery()"
+      (ngModelChange)="searchQuery.set($event)"
+      type="text">
+  </div>
+  <div class="col-md-4">
+    <select
+      [ngModel]="selectedCategory()"
+      (ngModelChange)="selectedCategory.set($event)"
+      class="form-select"
+    >
+      @for (cat of categories(); track cat){
+        <option [value]="cat">{{$index}}-{{cat}}</option>
+      }
+    </select>
+  </div>
+</div>

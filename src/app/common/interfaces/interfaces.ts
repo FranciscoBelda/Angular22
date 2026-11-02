@@ -13,13 +13,13 @@ export interface Rating {
   count: number;
 }
 export interface Product {
-  id: string;
+  id: number;
   title: string;
   price: number;
   stock: number;
   description: string;
-  category: CategoryType;
-  imageUrl: string;
+  category: string;
+  image: string;
   rating: Rating;
 }
 

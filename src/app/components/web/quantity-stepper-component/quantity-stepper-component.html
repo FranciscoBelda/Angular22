@@ -1,0 +1,18 @@
+<div class="d-flex">
+  <div class="input-group input-group-sm mb-2">
+    <button
+      type="button"
+      [disabled]="quantity() <= 1"
+      (click)="decrement()"
+      class="btn btn-outline-secondary">-</button>
+    <button
+      type="button"
+      [disabled]="quantity() >= maxStock()"
+      (click)="increment()"
+      class="btn btn-outline-primary">+</button>
+  </div>
+  <div class="align-self-center small">
+    <strong>Quantity: </strong>{{quantity()}}
+  </div>
+</div>
+

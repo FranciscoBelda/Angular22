@@ -11,6 +11,7 @@
         <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/catalog">Catalog</a></li>
         <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/user-profile">User Profile</a></li>
         <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/cart-summary">Cart Summary</a></li>
+        <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/product-detail">Product Detail</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Teoría
@@ -21,13 +22,21 @@
             <li><a class="dropdown-item" routerLink="/clase/teoria7">Teoría 7</a></li>
             <li><a class="dropdown-item" routerLink="/clase/teoria8">Teoría 8</a></li>
             <li><a class="dropdown-item" routerLink="/clase/teoria9">Teoría 9</a></li>
+            <li><a class="dropdown-item" routerLink="/clase/teoria10">Teoría 10</a></li>
+            <li><a class="dropdown-item" routerLink="/clase/teoria11">Teoría 11</a></li>
+            <li><a class="dropdown-item" routerLink="/clase/teoria12">Teoría 12</a></li>
           </ul>
         </li>
       </ul>
-      <div class="d-flex">
-        <button class="btn btn-outline-light position-relative">
-          Ver Carrito
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+      <div class="d-flex me-2">
+        <button class="btn btn-outline-light position-relative d-flex align-items-center gap-2" (click)="onOpenCart()">
+          🛒
+          @if (cartService.totalItems() > 0) {
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger shadow">
+              {{cartService.totalItems()}}
+              <span class="visually-hidden">artículos en el carrito</span>
+            </span>
+          }
         </button>
       </div>
     </div>

@@ -10,12 +10,12 @@ import {CategoryType, Product} from '../../../common/interfaces/interfaces';
 export class EjerciciosSesion4 implements OnInit {
   products: Product[] = [
     {
-      id: '0',
+      id: 0,
       title: 'Camiseta',
       price: 5,
       description: 'Camiseta guapa',
       category: 'clothing',
-      imageUrl: 'imageCamiseta.jpg',
+      image: 'imageCamiseta.jpg',
       stock: 5,
       rating: {
         count: 1,
@@ -23,12 +23,12 @@ export class EjerciciosSesion4 implements OnInit {
       }
     },
     {
-      id: '1',
+      id: 1,
       title: 'Radio',
       price: 15,
       description: 'Radio guapa',
       category: 'electronics',
-      imageUrl: 'imageRadio.jpg',
+      image: 'imageRadio.jpg',
       stock: 5,
       rating: {
         count: 2,

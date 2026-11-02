@@ -1,0 +1,35 @@
+<div class="container py-4">
+  @if (isLoading()) {
+    <div class="d-flex align-items-center justify-content-center">
+      <button class="btn-subtle theme-primary" type="button" disabled>
+        <span class="spinner-border" aria-hidden="true"></span>
+        <span role="status">Loading…</span>
+      </button>
+    </div>
+  } @else if (hasError()){
+    <div class="alert alert-danger shadow-sm d-flex align-items-center justify-content-between p-4" role="alert">
+      <div>
+        <h4 class="alert-heading mb-1">⚠ No se ha podido cargar el producto!</h4>
+        <p class="mb-0">EL artículo solicitado no existe o el servicio no está disponible en este momento.</p>
+      </div>
+      <button class="btn btn-outline-danger" (click)="productId.set(1)">🔄 Reintenta con producto #1</button>
+    </div>
+  } @else {
+    @if (productResource.value(); as prod){
+      <div class="card shadow-sm p-4">
+        <div class="row align-items-center">
+          <div class="col-md-4 text-center">
+            <img [src]="prod.image || 'https://via.placeholder.com/150'" class="img-fluid max-h-48" alt="">
+          </div>
+          <div class="col-md-8">
+            <span class="badge  bg-secondary mb-2">{{prod.category}}</span>
+            <h2>{{prod.title}}</h2>
+            <p class="text-muted">{{prod.description}}</p>
+            <h3 class="text-primary fw-bold">{{prod.price | currency: 'EUR'}}</h3>
+            <button class="btn btn-sm btn-danger" (click)="testError()">Over 9000!</button>
+          </div>
+        </div>
+      </div>
+    }
+  }
+</div>

@@ -1,6 +1,7 @@
-<app-navbar/>
+<app-navbar (openCart)="isCartOpen.set(true)"/>
 <div class="container-fluid">
   <router-outlet/>
   <app-footer/>
 </div>
 
+<app-cart-drawer-component [isOpen]="isCartOpen()" (closeDrawer)="isCartOpen.set(false)"/>
